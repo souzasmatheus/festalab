@@ -27,6 +27,10 @@ class Party {
     this.numberOfBrigadeiros = setUp[num].numberOfBrigadeiros;
     this.numberOfGiftBoxes = setUp[num].numberOfGiftBoxes;
   }
+
+  changeAmount(num, prop) {
+    this[prop] = this[prop] + num;
+  }
 }
 
 var party = new Party();
@@ -37,3 +41,5 @@ console.log(`
 numGiftBoxes: ${party.numberOfGiftBoxes},
 numBrigadeiros: ${party.numberOfBrigadeiros}
 `);
+party.changeAmount(-1, 'numberOfCakeHolders');
+console.log(party.numberOfCakeHolders);
