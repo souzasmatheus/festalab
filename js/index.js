@@ -36,6 +36,16 @@ class Party {
   setAmountToZero(prop) {
     this[prop] = 0;
   }
+
+  getItemTotal(prop) {
+    const prices = {
+      numberOfCakeHolders: '50',
+      numberOfBrigadeiros: '0.1',
+      numberOfGiftBoxes: '5'
+    };
+
+    return eval(String(this[prop]) * prices[prop]);
+  }
 }
 
 var party = new Party();
@@ -48,5 +58,6 @@ numBrigadeiros: ${party.numberOfBrigadeiros}
 `);
 party.changeAmount(12, 'numberOfCakeHolders');
 console.log(party.numberOfCakeHolders);
-party.setAmountToZero('numberOfCakeHolders');
-console.log(party.numberOfCakeHolders);
+//party.setAmountToZero('numberOfCakeHolders');
+//console.log(party.numberOfCakeHolders);
+console.log(party.getItemTotal('numberOfCakeHolders'));
