@@ -48,24 +48,13 @@ class Party {
   }
 }
 
-/*var party = new Party();
-console.log(party.numberOfGuests);
-party.numGuests = 20;
-console.log(party.numberOfGuests);
-console.log(`
-numGiftBoxes: ${party.numberOfGiftBoxes},
-numBrigadeiros: ${party.numberOfBrigadeiros}
-`);
-party.changeAmount(12, 'numberOfCakeHolders');
-console.log(party.numberOfCakeHolders);
-//party.setAmountToZero('numberOfCakeHolders');
-//console.log(party.numberOfCakeHolders);
-console.log(party.getItemTotal('numberOfCakeHolders'));*/
+// Instanciate Party
+const party = new Party();
 
 // DOM references
-const option10 = document.querySelector('#option-10');
-const option15 = document.querySelector('#option-15');
-const option20 = document.querySelector('#option-20');
+const options = document.querySelectorAll(
+  '.guests-container .options-container p'
+);
 
 const cakeCloseBtn = document.querySelector('#cake-holder .close-btn');
 const cakeMinusBtn = document.querySelector('#cake-holder .minus');
@@ -94,3 +83,23 @@ const giftBoxTotalSum = document.querySelector(
 const totalSum = document.querySelector(
   '.total-container .total-sum-container span'
 );
+
+// Functionality
+options.forEach(option => {
+  option.addEventListener('click', () => {
+    party.numGuests = option.innerHTML;
+    cakeQtyDisplay.value = party.numberOfCakeHolders;
+    brigadeiroQtyDisplay.value = party.numberOfBrigadeiros;
+    giftBoxQtyDisplay.value = party.numberOfGiftBoxes;
+
+    const cakeSum = party.getItemTotal('numberOfCakeHolders');
+    const brigadeiroSum = party.getItemTotal('numberOfBrigadeiros');
+    const giftBoxSum = party.getItemTotal('numberOfGiftBoxes');
+
+    cakeTotalSum.innerHTML = cakeSum;
+    brigadeiroTotalSum.innerHTML = brigadeiroSum;
+    giftBoxTotalSum.innerHTML = giftBoxSum;
+
+    totalSum.innerHTML = cakeSum + brigadeiroSum + giftBoxSum;
+  });
+});
