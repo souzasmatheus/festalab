@@ -29,7 +29,12 @@ class Party {
   }
 
   changeAmount(num, prop) {
-    this[prop] = this[prop] + num;
+    let result = this[prop] + num;
+    this[prop] = result < 0 ? 0 : result;
+  }
+
+  setAmountToZero(prop) {
+    this[prop] = 0;
   }
 }
 
@@ -41,5 +46,7 @@ console.log(`
 numGiftBoxes: ${party.numberOfGiftBoxes},
 numBrigadeiros: ${party.numberOfBrigadeiros}
 `);
-party.changeAmount(-1, 'numberOfCakeHolders');
+party.changeAmount(12, 'numberOfCakeHolders');
+console.log(party.numberOfCakeHolders);
+party.setAmountToZero('numberOfCakeHolders');
 console.log(party.numberOfCakeHolders);
