@@ -159,3 +159,31 @@ brigadeiroPlusBtn.addEventListener('click', () => {
 
   totalSum.innerHTML = cakeSum + brigadeiroSum + giftBoxSum;
 });
+
+giftBoxMinusBtn.addEventListener('click', () => {
+  party.changeAmount(-1, 'numberOfGiftBoxes');
+
+  giftBoxQtyDisplay.value = party.numberOfGiftBoxes;
+
+  const cakeSum = party.getItemTotal('numberOfCakeHolders');
+  const brigadeiroSum = party.getItemTotal('numberOfBrigadeiros');
+  const giftBoxSum = party.getItemTotal('numberOfGiftBoxes');
+
+  giftBoxTotalSum.innerHTML = giftBoxSum;
+
+  totalSum.innerHTML = cakeSum + brigadeiroSum + giftBoxSum;
+});
+
+giftBoxPlusBtn.addEventListener('click', () => {
+  party.changeAmount(1, 'numberOfGiftBoxes');
+
+  giftBoxQtyDisplay.value = party.numberOfGiftBoxes;
+
+  const cakeSum = party.getItemTotal('numberOfCakeHolders');
+  const brigadeiroSum = party.getItemTotal('numberOfGiftBoxes');
+  const giftBoxSum = party.getItemTotal('numberOfGiftBoxes');
+
+  giftBoxTotalSum.innerHTML = giftBoxSum;
+
+  totalSum.innerHTML = cakeSum + brigadeiroSum + giftBoxSum;
+});
