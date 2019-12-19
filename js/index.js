@@ -44,7 +44,7 @@ class Party {
       numberOfGiftBoxes: '5'
     };
 
-    return eval(String(this[prop]) * prices[prop]);
+    return Number(eval(String(this[prop]) * prices[prop]).toFixed(2));
   }
 }
 
@@ -128,6 +128,34 @@ cakePlusBtn.addEventListener('click', () => {
   const giftBoxSum = party.getItemTotal('numberOfGiftBoxes');
 
   cakeTotalSum.innerHTML = cakeSum;
+
+  totalSum.innerHTML = cakeSum + brigadeiroSum + giftBoxSum;
+});
+
+brigadeiroMinusBtn.addEventListener('click', () => {
+  party.changeAmount(-1, 'numberOfBrigadeiros');
+
+  brigadeiroQtyDisplay.value = party.numberOfBrigadeiros;
+
+  const cakeSum = party.getItemTotal('numberOfCakeHolders');
+  const brigadeiroSum = party.getItemTotal('numberOfBrigadeiros');
+  const giftBoxSum = party.getItemTotal('numberOfGiftBoxes');
+
+  brigadeiroTotalSum.innerHTML = brigadeiroSum;
+
+  totalSum.innerHTML = cakeSum + brigadeiroSum + giftBoxSum;
+});
+
+brigadeiroPlusBtn.addEventListener('click', () => {
+  party.changeAmount(1, 'numberOfBrigadeiros');
+
+  brigadeiroQtyDisplay.value = party.numberOfBrigadeiros;
+
+  const cakeSum = party.getItemTotal('numberOfCakeHolders');
+  const brigadeiroSum = party.getItemTotal('numberOfBrigadeiros');
+  const giftBoxSum = party.getItemTotal('numberOfGiftBoxes');
+
+  brigadeiroTotalSum.innerHTML = brigadeiroSum;
 
   totalSum.innerHTML = cakeSum + brigadeiroSum + giftBoxSum;
 });
