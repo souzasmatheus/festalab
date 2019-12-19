@@ -88,6 +88,8 @@ const closeCake = document.querySelector('#cake-holder .close-btn');
 const closeBrigadeiro = document.querySelector('#brigadeiro .close-btn');
 const closeGift = document.querySelector('#gift-box .close-btn');
 
+const items = document.querySelectorAll('.items-container .item');
+
 // Functionality
 options.forEach(option => {
   option.addEventListener('click', () => {
@@ -105,6 +107,12 @@ options.forEach(option => {
     giftBoxTotalSum.innerHTML = giftBoxSum;
 
     totalSum.innerHTML = cakeSum + brigadeiroSum + giftBoxSum;
+
+    items.forEach(item => {
+      if (item.classList.contains('none')) {
+        item.classList.remove('none');
+      }
+    });
   });
 });
 
@@ -200,6 +208,8 @@ closeCake.addEventListener('click', () => {
   const giftBoxSum = party.getItemTotal('numberOfGiftBoxes');
 
   totalSum.innerHTML = cakeSum + brigadeiroSum + giftBoxSum;
+
+  document.querySelector('#cake-holder').classList.add('none');
 });
 
 closeBrigadeiro.addEventListener('click', () => {
@@ -210,6 +220,8 @@ closeBrigadeiro.addEventListener('click', () => {
   const giftBoxSum = party.getItemTotal('numberOfGiftBoxes');
 
   totalSum.innerHTML = cakeSum + brigadeiroSum + giftBoxSum;
+
+  document.querySelector('#brigadeiro').classList.add('none');
 });
 
 closeGift.addEventListener('click', () => {
@@ -220,4 +232,6 @@ closeGift.addEventListener('click', () => {
   const giftBoxSum = party.getItemTotal('numberOfGiftBoxes');
 
   totalSum.innerHTML = cakeSum + brigadeiroSum + giftBoxSum;
+
+  document.querySelector('#gift-box').classList.add('none');
 });
