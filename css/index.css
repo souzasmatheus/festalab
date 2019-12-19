@@ -23,6 +23,10 @@ body {
   align-items: center;
 }
 
+.item .close-btn {
+  cursor: pointer;
+}
+
 .item .item-info-container {
   display: flex;
   flex-direction: column;
