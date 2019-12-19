@@ -1,9 +1,9 @@
 class Party {
   constructor() {
     this.numberOfGuests;
-    this.numberOfCakeHolders;
-    this.numberOfBrigadeiros;
-    this.numberOfGiftBoxes;
+    this.numberOfCakeHolders = 0;
+    this.numberOfBrigadeiros = 0;
+    this.numberOfGiftBoxes = 0;
   }
 
   set numGuests(num) {
@@ -102,4 +102,32 @@ options.forEach(option => {
 
     totalSum.innerHTML = cakeSum + brigadeiroSum + giftBoxSum;
   });
+});
+
+cakeMinusBtn.addEventListener('click', () => {
+  party.changeAmount(-1, 'numberOfCakeHolders');
+
+  cakeQtyDisplay.value = party.numberOfCakeHolders;
+
+  const cakeSum = party.getItemTotal('numberOfCakeHolders');
+  const brigadeiroSum = party.getItemTotal('numberOfBrigadeiros');
+  const giftBoxSum = party.getItemTotal('numberOfGiftBoxes');
+
+  cakeTotalSum.innerHTML = cakeSum;
+
+  totalSum.innerHTML = cakeSum + brigadeiroSum + giftBoxSum;
+});
+
+cakePlusBtn.addEventListener('click', () => {
+  party.changeAmount(1, 'numberOfCakeHolders');
+
+  cakeQtyDisplay.value = party.numberOfCakeHolders;
+
+  const cakeSum = party.getItemTotal('numberOfCakeHolders');
+  const brigadeiroSum = party.getItemTotal('numberOfBrigadeiros');
+  const giftBoxSum = party.getItemTotal('numberOfGiftBoxes');
+
+  cakeTotalSum.innerHTML = cakeSum;
+
+  totalSum.innerHTML = cakeSum + brigadeiroSum + giftBoxSum;
 });
